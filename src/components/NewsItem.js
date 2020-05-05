@@ -11,11 +11,26 @@ import styled from 'styled-components';
 
 const NewsItemBlock = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 1rem;
 
   .thumbnail {
+    img {
+      width: 200px;
+      height: 140px;
+    }
   }
 
   .contents {
+    a {
+      text-decoration: none;
+      color: #000000;
+    }
+    h2 {
+      width: 200px;
+      font-size: 1rem;
+    }
   }
 `;
 function NewsItem({ article }) {
@@ -33,7 +48,6 @@ function NewsItem({ article }) {
         <h2>
           <a href={url}>{title}</a>
         </h2>
-        <p>{description}</p>
       </div>
     </NewsItemBlock>
   );

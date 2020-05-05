@@ -6,9 +6,15 @@ import axios from 'axios';
 import NewsItem from './NewsItem';
 
 const NewsListBlock = styled.div`
-  box-sizing: border-box;
-
+  display: flex;
+  flex: 1 1 1;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  padding-left: 5rem;
   width: 768px;
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   @media screen and (max-width: 768px) {
     width: 100%;
