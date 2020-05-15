@@ -21,7 +21,7 @@ const NewsListBlock = styled.div`
   }
 `;
 
-function NewsList() {
+function NewsList({ category }) {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -30,8 +30,10 @@ function NewsList() {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query = category === 'all' ? '' : `&category=${category}`;
+
         const response = await axios.get(
-          'http://newsapi.org/v2/top-headlines?country=kr&category=business&apiKey=b540785b10d44283a7805f8e87785008',
+          `http://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=b540785b10d44283a7805f8e87785008`,
         );
         setArticles(response.data.articles);
       } catch (e) {
@@ -41,7 +43,7 @@ function NewsList() {
     };
 
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) {
     return <NewsListBlock>loading...</NewsListBlock>;

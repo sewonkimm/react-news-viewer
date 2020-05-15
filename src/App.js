@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import Categories from './components/Categories';
 import NewsList from './components/NewsList';
@@ -13,10 +13,13 @@ const AppBlock = styled.div`
 `;
 
 function App() {
+  const [category, setCategory] = useState('all');
+  const onSelect = useCallback((category) => setCategory(category), []);
+
   return (
     <AppBlock>
-      <Categories />
-      <NewsList />
+      <Categories category={category} onSelect={onSelect} />
+      <NewsList category={category} />
     </AppBlock>
   );
 }
